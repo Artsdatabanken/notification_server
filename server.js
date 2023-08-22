@@ -106,6 +106,7 @@ app.post("/", apiLimiter, async (req, res) => {
     try {
       let data = JSON.stringify(req.body.msg);
       fs.writeFileSync(msgFile, data);
+      msg = req.body.msg
       res.status(200).json(req.body.msg);
     } catch (error) {
       writeErrorLog(`Error while posting`, error);
